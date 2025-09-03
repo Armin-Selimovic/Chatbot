@@ -1,6 +1,6 @@
 # Chatbot (Learning Project: React)
 
-This is a small **Chatbot project** I built while following a tutorial. Ofcourse I didin't only use this tutorial to learn, because for multiple things it proved to be insufficent. Thank God reddit, Stack Overflow, GeekforGeeks and simmilar sites exist.  
+This is a small **Chatbot project** I built while following a tutorial and added some adjustments of my own. Ofcourse I didin't only use this tutorial to learn, because for multiple things it proved to be insufficent. Thank God reddit, Stack Overflow, GeekforGeeks and simmilar sites exist.  
 
 My main reasons for doing this were:
 
