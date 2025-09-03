@@ -17,6 +17,7 @@
 		<script type="text/babel">
 
 			function ChatInput({chatMessages, setChatMessages}) {
+				const [isBusy, setisBusy] = React.useState(false);
 				const [inputText, setInputText] = React.useState('');
 
 				function SaveInputText(event) {
@@ -24,6 +25,18 @@
 				}
 
 				async function SendMessage() {
+
+					if(!inputText)
+					{
+						alert("Input a message")
+						return;
+					}
+
+					if(isBusy)
+						return;
+					else
+						setisBusy(true)
+
 					setChatMessages([
 						...chatMessages,
 						{
@@ -40,7 +53,7 @@
 					setChatMessages(prev => [
 						...prev,
 						{
-							message: 'thinking...',
+							message: 'Thinking...',
 							sender: 'robot',
 							id: tempId
 						}
@@ -55,6 +68,8 @@
 								: m
 						)
 					);
+
+					setisBusy(false);
 				}
 
 					function handleKeyDown(e) {
