@@ -24,27 +24,37 @@
 				}
 
 				async function SendMessage() {
-					const newChatMessage = [
+					setChatMessages([
 						...chatMessages,
 						{
 							message: inputText,
 							sender: 'user',
 							id: crypto.randomUUID()
 						}
-					];
-
-					const response = await Chatbot.getResponseAsync(inputText);
-
-					setChatMessages([
-						...newChatMessage,
-						{
-							message: response,
-							sender: 'robot',
-							id: crypto.randomUUID()
-						}
 					]);
 
 					setInputText('');
+
+					const tempId = crypto.randomUUID();
+
+					setChatMessages(prev => [
+						...prev,
+						{
+							message: 'thinking...',
+							sender: 'robot',
+							id: tempId
+						}
+					]);
+
+					const response = await Chatbot.getResponseAsync(inputText);
+
+					setChatMessages(prev =>
+						prev.map(m =>
+							m.id === tempId
+								? { ...m, message: response }
+								: m
+						)
+					);
 				}
 
 					function handleKeyDown(e) {
